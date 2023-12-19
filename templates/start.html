@@ -7,4 +7,10 @@
 <h1>{{ survey.title }}</h1>
 <p>{{ survey.instructions }}</p>
 <form action ="/begin" method="POST"><button>START</button></form>
+{% if session.get('responses', False) %}
+    <br>
+    <form action="/questions/{{ session['responses'] | length }}" method="GET">
+        <button>RESUME</button>
+    </form>
+{% endif %}
 {% endblock %}
